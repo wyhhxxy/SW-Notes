@@ -1,0 +1,56 @@
+【R1】
+sy
+int g 0/0/0
+ip add  192.168.1.253 24
+vrrp vrid 1  virtual-ip 192.168.1.254
+vrrp vrid 1 priority  120
+vrrp vrid  preempt-mode  time  delay  20
+q
+
+
+【R2】
+sy
+int g0/0/0
+ip add 192.168.1.252 24
+vrrp vrid 1  virtual-ip 192.168.1.254
+q
+
+
+
+【查看】
+
+dis   vrrp 
+dis   vrrp  brief
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2、track（跟踪）接口状态
+作用： Master 其他接口发生故障时切换
+
+
+【R1】
+int g 0/0/0
+ip add 192.168.1.253 24
+vrrp  vrid 1  vritual-ip  192.168.1.254
+vrrp  vrid  1  priority  120
+
+
+vrrp vrid 1 track int Gi  0/0/1  reduced  30
+vrrp vrid 1  preempt-mode  timer  delay 20
+q
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3、VRRP与BFD联动
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+
+sy
+int g 0/0/1
+ip add 192.168.56.201 24
+q
+
+aaa
+local-user test001 password cipher  huawei123
+local-user test001 service-type ssh
+local-user test001 privilege level 15
+
+ssh user test001    authentication-type   password
+stelnet server enable 
+
+rsa  local-key-pair create 
+
+user-interface  vty 0  4
+authentication-mode  aaa 
+protocol inbound all
+
+
+
+
+
+
+
+
+
+

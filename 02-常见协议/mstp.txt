@@ -1,0 +1,94 @@
+
+【SW1】
+sy
+vlan batch 10  20  30  40
+
+stp mode mstp
+stp region-configuration
+
+region-name sw1
+instance 1 vlan 10 20
+instance 2 vlan 30 40
+active region-configuration
+q
+
+
+stp instance 0 priority 0
+stp instance 1 priority 0
+stp instance 2 priority 4096
+stp enable
+
+
+int g 0/0/24
+port link-type trunk
+port trunk allow-pass vlan all
+int g 0/0/21
+port link-type trunk
+port trunk allow-pass vlan all
+
+
+**************************************
+【SW2】
+
+sy
+vlan batch 10  20  30  40
+
+stp mode mstp
+stp region-configuration
+
+region-name sw1
+instance 1 vlan 10 20
+instance 2 vlan 30 40
+active region-configuration
+q
+
+stp instance 0 priority 4096
+stp instance 1 priority 4096
+stp instance 2 priority 0
+stp enable
+
+
+int g 0/0/24
+port link-type trunk
+port trunk allow-pass vlan all
+int g 0/0/22
+port link-type trunk
+port trunk allow-pass vlan all
+q
+
+
+***************************************
+【SW3】
+sy
+vlan batch 10  20  30  40
+
+stp mode mstp
+stp region-configuration
+
+region-name sw1
+instance 1 vlan 10 20
+instance 2 vlan 30 40
+active region-configuration
+q
+
+
+
+
+int g 0/0/21
+port link-type trunk
+port trunk allow-pass vlan all
+int g 0/0/22
+port link-type trunk
+port trunk allow-pass vlan all
+q
+
+****************************************
+
+查看
+【SW3】
+
+dis stp brief
+
+
+
+

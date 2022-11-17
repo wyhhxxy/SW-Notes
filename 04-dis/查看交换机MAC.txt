@@ -1,0 +1,46 @@
+
+查看系统MAC
+
+盒式交换机：
+<S5700>   display bridge mac-add
+
+框式交换机：
+<S9303>   display system-mac
+
+
+
+******************************************************
+查看接口MAC
+
+<S5700>display interface GigabitEthernet0/0/10
+
+
+
+*********************************************
+查看设备学习到的mac表项
+
+整机所有类型mac地址表项：
+<S5700>display mac-address 
+
+某端口下mac地址表项：
+<S5700>display mac-address GigabitEthernet 0/0/X
+
+系统所有动态MAC地址表项：
+<S5700>display mac-address dynamic
+
+此处dynamic可以替换为blackhole、static、security、sticky、summary
+分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+

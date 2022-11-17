@@ -1,0 +1,13 @@
+
+1、清空配置
+reset saved-configuration
+
+Y
+
+2、重启
+
+reboot
+
+N
+
+Y

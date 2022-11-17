@@ -1,0 +1,52 @@
+STP
+
+【SW1】
+sy
+stp mode stp
+stp enable
+
+
+【SW2】 
+sy
+stp mode stp
+stp enable
+
+
+【SW3】 
+sy
+stp mode stp
+stp enable
+
+***************************
+【SW1】
+stp root primary 
+
+
+【SW2】
+stp root secondary 
+
+****************************************
+
+查看
+
+【SW1】
+dis stp 
+dis stp brief
+
+【SW3】
+dis stp int g 0/0/22
+
+int g 0/0/21
+stp cost 60000
+
+
+
+
+
+
+
+
+
+
+
+

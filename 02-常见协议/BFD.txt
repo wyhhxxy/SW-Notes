@@ -1,0 +1,67 @@
+【SW1】
+sy
+vlan 12
+
+
+int g 0/0/24
+port link-t t
+port t all  vlan 12
+q
+
+
+int vlanif 12
+ip add 10.1.12.1  24
+q
+
+
+bfd
+q
+
+
+bfd  1  bind peer-ip def   int g 0/0/24
+discri  local  11
+discri   remote  22
+commit
+
+
+ip route-s  192.168.10.0    24  10.1.12.2  track  bfd-s  1
+
+
+*************************************************
+【SW2】
+sy
+vlan  batch  10   12
+
+int g 0/0/1
+port link-t a
+port  def   v 10
+q
+
+int g 0/0/24
+port link-t t
+port  t  all  v  12
+q
+
+int vlanif 10
+ip add 192.168.10.254  24
+q
+int vlanif 12
+ip add 10.1.12.2   24
+q
+
+
+bfd
+q
+
+
+bfd  1  bind peer-ip  def  int g 0/0/24
+discri  local  22
+discri   remote  11
+commit
+
+****************************************8
+
+查看 
+dis bfd  ses   all
+
+

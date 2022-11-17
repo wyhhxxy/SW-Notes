@@ -1,0 +1,71 @@
+
+dis   bridge  mac-add
+
+dis   int  g  0/0/10
+
+*****************************************
+
+交换机如何查看各类MAC信息？
+解决方案
+一、查看系统MAC
+
+1）盒式交换机：
+
+<S5700>display bridge mac-add
+System bridge MAC address: xxxx-xxxx-xxxx
+
+2）框式交换机：
+
+<S9303>display system-mac
+MAC-num      :1
+Index         MAC Addr
+----------------------------
+default       xxxx-xxxx-xxxx
+
+current       xxxx-xxxx-xxxx
+
+二、查看接口MAC
+
+<S5700>display interface GigabitEthernet0/0/10
+GigabitEthernet0/0/10 current state : UP
+Line protocol current state : UP
+Description:
+Switch Port, Link-type : trunk(configured),
+PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 1600
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is xxxx-xxxx-xxxx
+Current system time: 2015-03-02 10:50:43+08:00
+Port Mode: COMMON COPPER
+Speed : 1000,   Loopback: INTERNAL
+Duplex: FULL,   Negotiation: DISABLE
+Mdi   : AUTO,   Flow-control: DISABLE
+Last 300 seconds input rate 480 bits/sec, 0 packets/sec
+Last 300 seconds output rate 480 bits/sec, 0 packets/sec
+Input peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47
+Output peak rate 13880 bits/sec, Record time: 2015-02-19 17:09:47
+Input:  510225 packets, 80014227 bytes
+  Unicast:                          0,  Multicast:                      510225
+  Broadcast:                        0,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+  Total Error:                      0
+  CRC:                              0,  Giants:                              0
+  Jabbers:                          0,  Fragments:                           0
+  Runts:                            0,  DropEvents:                          0
+  ---- More ----
+
+三、查看设备学习到的mac表项
+
+1）查看整机所有类型mac地址表项：
+
+<S5700>display mac-address 
+
+2）查看某端口下mac地址表项：
+
+<S5700>display mac-address GigabitEthernet 0/0/X
+
+3）查看系统所有动态MAC地址表项：
+
+<S5700>display mac-address dynamic
+
+此处dynamic可以替换为blackhole、static、security、sticky、summary分别查看黑洞MAC、静态MAC、安全动态MAC、sticky MAC、MAC表项汇总信息。
